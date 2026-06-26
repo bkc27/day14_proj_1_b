@@ -20,3 +20,8 @@ git config user.email ""
 LAPTOP
 git config --global user.name
 git config --global user.email
+
+
+cmd
+rd /s /q .git
+
