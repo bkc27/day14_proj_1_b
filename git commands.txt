@@ -1,0 +1,22 @@
+git init
+git remote add origin REPO_URL
+git config --list
+
+git branch -M main
+
+git pull origin main
+
+..... Work complete
+
+git add .
+git status
+git commit -m "Your message"
+git push origin main
+
+DESKTOP
+git config user.name ""
+git config user.email ""
+
+LAPTOP
+git config --global user.name
+git config --global user.email
