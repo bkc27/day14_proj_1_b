@@ -23,10 +23,9 @@ app.get("/students", (req, res) => {
 app.get("/students/:id", (req, res) => {
     const id = req.params.id;
     const student = students.find(s => s.id == id);
-    if(!student)
-    {
+    if (!student) {
         return res.status(404).json({
-            message:"Student Not Found"
+            message: "Student Not Found"
         });
     }
 
@@ -53,21 +52,40 @@ app.put("/students/:id", (req, res) => {
     const { id } = req.params;
     const student = students.find(s => s.id == id);
     // if student found = value....
-    if(!student)
-    {
+    if (!student) {
         return res.status(404).json({
-            message:"Student Not Found"
+            message: "Student Not Found"
         });
     }
     student.name = req.body.name;
     student.city = req.body.city;
 
     res.json({
-        message:"Record updated",
+        message: "Record updated",
         student
     });
-
 });
+
+app.delete("/students/:id", (req, res) => {
+    const id = req.params.id;
+    const student = students.find(s => s.id == id);
+    if (!student) {
+        return res.status(404).json({ message: "Invalid ID" });
+    }
+
+    students = students.filter(s => s.id != id);
+    res.json({
+        message:"Record Deleted",
+        students
+    })
+});
+
+
+
+
+
+
+
 
 app.listen(3000, () => {
     console.log("Server Started");
